@@ -1,0 +1,19 @@
+server {
+  listen 80;
+
+  location / {
+    return 302 https://$host$request_uri;
+  }
+}
+
+server {
+  listen 443 ssl spdy;
+  ssl_certificate    /etc/ssl/certs/mysite.crt;
+  ssl_certificate_key    /etc/ssl/private/mysite.key;
+  server_name www.mysite.com 192.168.1.1;
+
+  location / {
+    root   /var/www/public;
+    index  index.html index.htm;
+  }
+}
