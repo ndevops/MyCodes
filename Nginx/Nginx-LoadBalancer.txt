@@ -8,6 +8,8 @@ upstream web_backend {
     # Examples:
         # server www1.example.com:8080;
         # server 192.168.1.100;
+		# Default is round robin, ip_hash; for sticky cookie, least_conn; for least connected servers.
+    ip_hash;
     server 10.11.12.51;
     server 10.11.12.52;
 }
